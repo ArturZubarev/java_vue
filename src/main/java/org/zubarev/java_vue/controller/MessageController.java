@@ -1,11 +1,14 @@
 package org.zubarev.java_vue.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.zubarev.java_vue.domain.Message;
+import org.zubarev.java_vue.domain.View;
 import org.zubarev.java_vue.repository.MessageRepo;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -20,6 +23,7 @@ public class MessageController {
     }
 
     @GetMapping
+    @JsonView(View.IdName.class)
     public List<Message> list() {
         return messageRepo.findAll();
     }
@@ -33,6 +37,7 @@ public class MessageController {
 
     @PostMapping
     public Message createMessage(@RequestBody Message message) {
+        message.setCreationDate(LocalDateTime.now());
         return messageRepo.save(message);
     }
 
