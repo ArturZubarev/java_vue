@@ -14,7 +14,7 @@ import java.util.List;
 public class MessageController {
     private final MessageRepo messageRepo;
 
-    @Autowired
+
     public MessageController(MessageRepo messageRepo) {
         this.messageRepo = messageRepo;
     }
@@ -41,7 +41,7 @@ public class MessageController {
     public Message update(@PathVariable("id") Message messageFromDB,
                           @RequestBody Message messageFromUser) {
         BeanUtils.copyProperties(messageFromUser, messageFromDB, "id");
-        return messageRepo.save(messageFromUser);
+        return messageRepo.save(messageFromDB);
     }
 
     @DeleteMapping("{id}")

@@ -24,11 +24,12 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    compileOnly('org.postgresql:postgresql')
-    compileOnly('org.springframework.boot:spring-boot-starter-data-jpa')
-    compileOnly('javax.xml.bind:jaxb-api:2.3.1')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    runtimeOnly('org.postgresql:postgresql')
+    compileOnly('javax.xml.bind:jaxb-api:2.3.0')
     compileOnly('com.sun.xml.bind:jaxb-core')
     compileOnly('com.sun.xml.bind:jaxb-impl')
+
 }
 
 tasks.named('test') {
